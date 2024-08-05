@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext();
 
@@ -8,10 +8,10 @@ export const AuthProvider = ({ children }) => {
   const fakeAuth = ({ username, password }) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (username === 'admin' && password === 'password') {
-          resolve({ token: 'fake-token' });
+        if (username === "admin" && password === "password") {
+          resolve({ token: "fake-token" });
         } else {
-          reject(new Error('Invalid username or password'));
+          reject(new Error("Invalid username or password"));
         }
       }, 1000);
     });
@@ -20,20 +20,19 @@ export const AuthProvider = ({ children }) => {
     try {
       const result = await fakeAuth({ username, password });
       setToken(result.token);
-      localStorage.setItem('token', result.token);
+      localStorage.setItem("token", result.token);
     } catch (error) {
       throw error;
     }
   };
 
-
   const logout = () => {
     setToken(null);
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
   };
 
   useEffect(() => {
-    const savedToken = localStorage.getItem('token');
+    const savedToken = localStorage.getItem("token");
     if (savedToken) {
       setToken(savedToken);
     }

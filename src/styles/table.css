@@ -1,88 +1,87 @@
 .table-management {
-    width: 25%;
-    padding: 10px;
-    background-color: #f8f9fa;
-    overflow-y: auto;
-    border-left: 1px solid #dee2e6;
-  }
-  .table {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
+  width: 25%;
+  padding: 10px;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+  border-left: 1px solid #dee2e6;
+}
+.table {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table.available {
+  background-color: #d4edda;
+}
+
+.table.occupied {
+  background-color: #f8d7da;
+}
+
+.table-management {
+  width: 25%;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-left: 1px solid #dee2e6;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.table-card {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #343a40;
+  cursor: pointer;
+}
+
+.table-card:hover {
+  background-color: #f1f1f1;
+}
+
+.table-card.paid {
+  background-color: green;
+  color: white;
+}
+
+.table-card.pending {
+  background-color: red;
+  color: white;
+}
+
+.table-card.no-order {
+  background-color: green;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .table-management {
+    width: 100%;
+    border: none;
     border-bottom: 1px solid #dee2e6;
   }
-  
-  .table.available {
-    background-color: #d4edda;
-  }
-  
-  .table.occupied {
-    background-color: #f8d7da;
+}
+
+@media (max-width: 480px) {
+  .order-card h4 {
+    font-size: 1em;
   }
 
-  .table-management {
-    width: 25%;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-left: 1px solid #dee2e6;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
   .table-card {
-    background-color: #ffffff;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #343a40;
-    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    font-size: 1em;
   }
-  
-  .table-card:hover {
-    background-color: #f1f1f1;
-  }
-
-  .table-card.paid {
-    background-color: green;
-    color: white;
-  }
-  
-  .table-card.pending {
-    background-color: red;
-    color: white;
-  }
-  
-  .table-card.no-order {
-    background-color: green;
-    color: white;
-  }
-
-  @media (max-width: 768px) {
-    .table-management {
-      width: 100%;
-      border: none;
-      border-bottom: 1px solid #dee2e6;
-    }
-  }
-  
-  @media (max-width: 480px) {
-  
-    .order-card h4 {
-      font-size: 1em;
-    }
-  
-    .table-card {
-      width: 50px;
-      height: 50px;
-      font-size: 1em;
-    }
-  }
+}
