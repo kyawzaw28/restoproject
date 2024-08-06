@@ -6,7 +6,7 @@ import "../../styles/currentorder.css";
 
 function CurrentOrder({ makeOrder, ...props }) {
   // console.log(props, 'props');
-  const [selectedTable, setSelectedTable] = useState();
+  const [selectedTable, setSelectedTable] = useState("");
   const [status, setStatus] = useState("pending");
   const [selectedValue, setSelectedValue] = useState("");
   const [error, setError] = useState(null);
@@ -62,7 +62,7 @@ function CurrentOrder({ makeOrder, ...props }) {
       orders.find((order) => order && order.tableId === tableNum) || {};
     return order ? order.status : null;
   };
-  console.log(error);
+  // console.log(error);
   // console.log(orders, 'orders');
   // console.log(orderItems, 'orderItems');
 

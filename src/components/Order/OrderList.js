@@ -6,12 +6,12 @@ import OrderContext from "../../OrderContext";
 
 function OrderList() {
   const { orders, updateOrderStatus } = useContext(OrderContext);
-  // const sortOrders = orders.sort((a, b) => a.id - b.id);
+  const sortOrders = orders.sort((a, b) => Number(b.id) - Number(a.id));
   // console.log(typeof sortOrders[0].id);
   return (
     <section className="order-list">
       {orders.length === 0 && <div className="no-orders">No orders today</div>}
-      {orders.map((order, index) => (
+      {sortOrders.map((order, index) => (
         <OrderCard
           key={index}
           order={order}

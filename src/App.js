@@ -15,12 +15,6 @@ import { AuthContext } from "./AuthContext";
 const App = () => {
   const { token } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (token) {
-      <Navigate to="/" replace />;
-    }
-  }, [token]);
-
   return (
     <Router>
       <Routes>

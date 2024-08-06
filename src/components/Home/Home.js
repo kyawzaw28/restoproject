@@ -9,7 +9,6 @@ import MenuList from "../Menu/MenuList";
 import CurrentOrder from "../CurrentOrder/CurrentOrder";
 import TableData from "../../data/tables.js";
 const Home = () => {
-  //   const { logout } = useContext(AuthContext);
   // console.log(TableData);
   const [item, setItem] = useState(null);
   const [orderPlace, setOrderPlace] = useState([]);
