@@ -1,7 +1,7 @@
 import React from "react";
 
 import "../../styles/table.css";
-function TableCard({ tableNumber, status }) {
+function TableCard({ table, status, tableReservation }) {
   // console.log(status);
   const getStatusClass = () => {
     switch (status) {
@@ -10,11 +10,19 @@ function TableCard({ tableNumber, status }) {
       case "pending":
         return "pending";
       default:
-        return "no-order";
+        return table.isReserved ? "no-order-reserved" : "no-order";
     }
   };
 
-  return <div className={`table-card ${getStatusClass()}`}>{tableNumber}</div>;
+  const handleClick = () => {
+    tableReservation(table);
+  };
+
+  return (
+    <div className={`table-card ${getStatusClass()}`} onClick={handleClick}>
+      {table.id}
+    </div>
+  );
 }
 
 export default TableCard;

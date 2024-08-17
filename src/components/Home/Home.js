@@ -7,17 +7,21 @@ import TableList from "../Table/TableList";
 import OrderList from "../Order/OrderList";
 import MenuList from "../Menu/MenuList";
 import CurrentOrder from "../CurrentOrder/CurrentOrder";
+import Reservation from "../Reservation/Reservation.js";
 import TableData from "../../data/tables.js";
 const Home = () => {
   // console.log(TableData);
   const [item, setItem] = useState(null);
   const [orderPlace, setOrderPlace] = useState([]);
-  const [isOrderBoxOpen, setIsOrderBoxOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [reservation, setReservation] = useState(false);
+  const [selectedTable, setSelectedTable] = useState([]);
+  const [tables, setTables] = useState(TableData);
 
   // console.log(orderPlace);
 
   const orderList = (item) => {
-    setIsOrderBoxOpen(true);
+    setIsOpen(true);
     setOrderPlace((prevOrder) => {
       const existingOrder = prevOrder.find(
         (orderItem) => orderItem.name === item.name
@@ -73,16 +77,33 @@ const Home = () => {
   };
 
   const closeOrderBox = () => {
-    setIsOrderBoxOpen(false); // Function to close the order box
+    setIsOpen(false);
   };
 
+  const tableReservation = (table) => {
+    setReservation(true);
+    setSelectedTable(table);
+  };
+
+  const closeReservationBox = () => {
+    setReservation(false);
+  };
+
+  const updateTableData = (updatedTableData) => {
+    setTables((prevTables) =>
+      prevTables.map((table) =>
+        table.id === updatedTableData.id ? updatedTableData : table
+      )
+    );
+  };
+  // console.log(tables);
   return (
     <div>
       <AppLogoo />
       <main>
         <OrderList />
         <MenuList addOrder={(item) => orderList(item)} />
-        <TableList />
+        <TableList tableReservation={tableReservation} tables={tables} />
         <CurrentOrder
           makeOrder={orderPlace}
           tableData={TableData}
@@ -91,7 +112,13 @@ const Home = () => {
           decreaseQuantity={decreaseQuantity}
           removeItem={removeItem}
           closeOrderBox={closeOrderBox}
-          isOrderBoxOpen={isOrderBoxOpen}
+          isOpen={isOpen}
+        />
+        <Reservation
+          isOpen={reservation}
+          onClose={closeReservationBox}
+          tableData={selectedTable}
+          updateTableData={updateTableData}
         />
         <section></section>
       </main>

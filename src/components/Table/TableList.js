@@ -2,10 +2,9 @@ import React, { useContext } from "react";
 
 import TableCard from "./TableCard";
 import "../../styles/table.css";
-import tables from "../../data/tables.js";
 import OrderContext from "../../OrderContext";
 
-function TableList() {
+function TableList({ tableReservation, tables }) {
   const { orders } = useContext(OrderContext);
   // console.log(typeof orders[0].tableId);
   const getOrderStatus = (tableNumber) => {
@@ -19,8 +18,9 @@ function TableList() {
       {tables.map((table) => (
         <TableCard
           key={table.id}
-          tableNumber={table.id}
+          table={table}
           status={getOrderStatus(table.id)}
+          tableReservation={tableReservation}
         />
       ))}
     </section>

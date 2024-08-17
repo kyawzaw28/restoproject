@@ -3,15 +3,15 @@ import React, { useState, useContext } from "react";
 import ReactDOM from "react-dom";
 import OrderContext from "../../OrderContext";
 import "../../styles/currentorder.css";
+import Modal from "../Modal/Modal";
 
 function CurrentOrder({ makeOrder, ...props }) {
   // console.log(props, 'props');
   const [selectedTable, setSelectedTable] = useState("");
-  const [status, setStatus] = useState("pending");
   const [selectedValue, setSelectedValue] = useState("");
   const [error, setError] = useState(null);
 
-  const { orders, setOrders, orderItems, setOrderItems, addOrder } =
+  const { orders, setOrders, orderItems, setOrderItems, addOrder, status } =
     useContext(OrderContext);
 
   const generatedOrderId = () => {
@@ -66,9 +66,12 @@ function CurrentOrder({ makeOrder, ...props }) {
   // console.log(orders, 'orders');
   // console.log(orderItems, 'orderItems');
 
-  return ReactDOM.createPortal(
-    <div className={`mini-box ${props.isOrderBoxOpen ? "open" : ""}`}>
-      <h4>Current Order</h4>
+  return (
+    <Modal
+      isOpen={props.isOpen}
+      onClose={props.closeOrderBox}
+      modalTitle="Current Order"
+    >
       <div className="mini-box-content">
         <h3>Select Table</h3>
 
@@ -124,11 +127,7 @@ function CurrentOrder({ makeOrder, ...props }) {
       <button className="proceed-order" onClick={handleAddOrder}>
         Proceed
       </button>
-      <button className="order-box-close" onClick={() => props.closeOrderBox()}>
-        X
-      </button>
-    </div>,
-    document.getElementById("current-order-root")
+    </Modal>
   );
 }
 

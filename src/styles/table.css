@@ -66,6 +66,11 @@
   color: white;
 }
 
+.table-card.no-order-reserved {
+  background-color: orange;
+  color: white;
+}
+
 @media (max-width: 768px) {
   .table-management {
     width: 100%;

@@ -34,6 +34,35 @@
   color: #6c757d;
 }
 
+.select-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.select-container select {
+  flex: 1;
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.select-container .clear-button {
+  margin-left: 10px;
+  background-color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.select-container .clear-button:hover {
+  background-color: #f0f0f0;
+}
+
+.select-container .clear-button:active {
+  background-color: #ccc;
+}
+
 @media (max-width: 768px) {
   .order-list {
     width: 100%;
