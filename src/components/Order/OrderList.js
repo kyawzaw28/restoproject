@@ -19,20 +19,24 @@ function OrderList() {
 
   return (
     <section className="order-list">
-      <div class="select-container">
-        <select
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-        >
-          <option value="all">Select a status</option>
-          <option value="pending">pending</option>
-          <option value="paid">paid</option>
-        </select>
-        <button class="clear-button" onClick={handleClear}>
-          Clear
-        </button>
-      </div>
-      {orders.length === 0 && <div className="no-orders">No orders today</div>}
+      {orders.length > 0 ? (
+        <div class="select-container">
+          <select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+          >
+            <option value="all">Select a status</option>
+            <option value="pending">pending</option>
+            <option value="paid">paid</option>
+          </select>
+          <button class="clear-button" onClick={handleClear}>
+            Clear
+          </button>
+        </div>
+      ) : (
+        <div className="no-orders">No orders today</div>
+      )}
+
       {sortOrders.map((order, index) => (
         <OrderCard
           key={index}

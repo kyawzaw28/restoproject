@@ -35,3 +35,30 @@
 .reservation-form button:hover {
   background-color: #45a049;
 }
+
+.reservation-detail {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-detail h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.reservation-detail .detail-section {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.reservation-detail .detail-section label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.reservation-detail .detail-section span {
+  font-size: 16px;
+  color: #666;
+}
